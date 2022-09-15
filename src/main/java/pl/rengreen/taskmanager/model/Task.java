@@ -11,6 +11,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 @Entity
+@Table(name = "Project")
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +23,7 @@ public class Task {
     @Column(length = 1200)
     @Size(max = 1200, message = "{task.description.size}")
     private String description;
-    private int timeSpent;
+    private int timeSpent = 0;
     @NotNull(message = "{task.date.not.null}")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;

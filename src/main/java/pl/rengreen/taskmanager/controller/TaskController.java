@@ -36,13 +36,15 @@ public class TaskController {
     }
 
     @GetMapping("/tasks/in-progress")
-    public String listTasksInProgress(Model model, Principal principal, SecurityContextHolderAwareRequestWrapper request) {
+    public String listTasksInProgress(Model model, Principal principal,
+            SecurityContextHolderAwareRequestWrapper request) {
         prepareTasksListModel(model, principal, request);
         model.addAttribute("onlyInProgress", true);
         return "views/tasks";
     }
 
-    private void prepareTasksListModel(Model model, Principal principal, SecurityContextHolderAwareRequestWrapper request) {
+    private void prepareTasksListModel(Model model, Principal principal,
+            SecurityContextHolderAwareRequestWrapper request) {
         String email = principal.getName();
         User signedUser = userService.getUserByEmail(email);
         boolean isAdminSigned = request.isUserInRole("ROLE_ADMIN");
@@ -55,7 +57,8 @@ public class TaskController {
     }
 
     @GetMapping("/task/create")
-    public String showEmptyTaskForm(Model model, Principal principal, SecurityContextHolderAwareRequestWrapper request) {
+    public String showEmptyTaskForm(Model model, Principal principal,
+            SecurityContextHolderAwareRequestWrapper request) {
         String email = principal.getName();
         User user = userService.getUserByEmail(email);
 
@@ -80,7 +83,12 @@ public class TaskController {
 
     @GetMapping("/task/edit/{id}")
     public String showFilledTaskForm(@PathVariable Long id, Model model) {
+        Task task = taskService.getTaskById(id);
         model.addAttribute("task", taskService.getTaskById(id));
+        int timeSpent = task.getTimeSpent();
+        System.out.println("Time spent" + timeSpent
+                + "------------------------------------------------------------------------------------------------------------------");
+        model.addAttribute("timeSpent", timeSpent);
         return "forms/task-edit";
     }
 
@@ -90,6 +98,12 @@ public class TaskController {
             return "forms/task-edit";
         }
         taskService.updateTask(id, task);
+
+        int timeSpent = task.getTimeSpent();
+        System.out.println("Time spent" + timeSpent
+                + "------------------------------------------------------------------------------------------------------------------");
+        model.addAttribute("timeSpent", timeSpent);
+
         return "redirect:/tasks";
     }
 
