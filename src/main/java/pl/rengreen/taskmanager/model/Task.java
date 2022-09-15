@@ -22,6 +22,7 @@ public class Task {
     @Column(length = 1200)
     @Size(max = 1200, message = "{task.description.size}")
     private String description;
+    private int timeSpent;
     @NotNull(message = "{task.date.not.null}")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
@@ -38,24 +39,33 @@ public class Task {
     public Task() {
     }
 
+    public int getTimeSpent() {
+        return timeSpent;
+    }
+
+    public void setTimeSpent(int timeSpent) {
+        this.timeSpent = timeSpent;
+    }
+
     public Task(@NotEmpty String name,
-                @NotEmpty @Size(max = 1200) String description,
-                @NotNull LocalDate date,
-                boolean isCompleted,
-                String creatorName) {
+            @NotEmpty @Size(max = 1200) String description,
+            @NotNull LocalDate date,
+            boolean isCompleted,
+            String creatorName, int timeSpent) {
         this.name = name;
         this.description = description;
         this.date = date;
         this.isCompleted = isCompleted;
         this.creatorName = creatorName;
+        this.timeSpent = timeSpent;
     }
 
     public Task(@NotEmpty String name,
-                @NotEmpty @Size(max = 1200) String description,
-                @NotNull LocalDate date,
-                boolean isCompleted,
-                String creatorName,
-                User owner) {
+            @NotEmpty @Size(max = 1200) String description,
+            @NotNull LocalDate date,
+            boolean isCompleted,
+            String creatorName,
+            User owner) {
         this.name = name;
         this.description = description;
         this.date = date;
@@ -122,8 +132,10 @@ public class Task {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Task task = (Task) o;
         return isCompleted == task.isCompleted &&
                 Objects.equals(id, task.id) &&

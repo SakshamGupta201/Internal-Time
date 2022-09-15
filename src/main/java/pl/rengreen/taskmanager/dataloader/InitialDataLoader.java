@@ -261,7 +261,8 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "Check how the site looks on emulators such as ipadpeek, screenfly, mobilephonesimulator. Test the site using real devices you have accessible to you or use opendevicelab.com.",
                 today.plusDays(8),
                 false,
-                userService.getUserByEmail("manager@mail.com").getName()
+                userService.getUserByEmail("manager@mail.com").getName(),
+                1
         ));
 
         //16
@@ -270,7 +271,8 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "Check that all pages have unique page titles (with a recommended length of fewer than 70 characters, including any keywords). Check that all pages have unique meta descriptions (with a recommended length of fewer than 156 characters, including keywords). Verify that pages have your chosen keywords included without any keyword stuffing (do not over-emphasize particular keywords).",
                 today.plusDays(10),
                 false,
-                userService.getUserByEmail("manager@mail.com").getName()
+                userService.getUserByEmail("manager@mail.com").getName(),
+                1
         ));
 
         //17
@@ -279,7 +281,8 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "See that all page URLs consistently reflect site information architecture. If you have had another older website, make sure you have 301 redirects in place for all old URLs (redirecting old pages to new ones).",
                 today.plusDays(12),
                 false,
-                userService.getUserByEmail("manager@mail.com").getName()
+                userService.getUserByEmail("manager@mail.com").getName(),
+                1
         ));
 
         //18
@@ -288,7 +291,8 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "Minify javascript and CSS files. Optimize the size of images and replace the existing images with the optimized images. Specify image dimensions for each image. Enable gzip compression on your hosting server.",
                 today.plusDays(14),
                 false,
-                userService.getUserByEmail("manager@mail.com").getName()
+                userService.getUserByEmail("manager@mail.com").getName(),
+                1
         ));
 
         //19
@@ -297,7 +301,8 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "Create cover images for Social Media such as Facebook, Twitter, LinkedIn company page, Pinterest, Instagram or others as necessary. Register all social media properties and get them set up with profile images, cover pages, links back to the website.",
                 today.plusDays(16),
                 false,
-                userService.getUserByEmail("manager@mail.com").getName()
+                userService.getUserByEmail("manager@mail.com").getName(),
+                1
         ));
 
         //20
@@ -306,7 +311,8 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "Send the finished site to the client and get feedback. Fix and change any requests by client. Give access to client to all accounts created on their behalf. Send updates to client and wait for client sign-off.",
                 today.plusDays(18),
                 false,
-                userService.getUserByEmail("manager@mail.com").getName()
+                userService.getUserByEmail("manager@mail.com").getName(),
+                1
         ));
 
         taskService.findAll().stream().map(t -> "saved task: '" + t.getName()
