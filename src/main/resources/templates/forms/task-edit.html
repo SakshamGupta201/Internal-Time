@@ -93,31 +93,42 @@
 
               <!-- Total Time Spent -->
               <div class="form-group">
-                <label for="timeSpent" class="col-form-label"
+                <label for="tS" class="col-form-label"
                   >Total Requirement Analysis Hours</label
                 >
                 <input
-                  id="timeSpent"
-                  name="timeSpent"
+                  id="tS"
+                  name="tS"
                   th:value="${timeSpent}"
                   type="number"
                   class="form-control"
                   readonly
                 />
               </div>
+
               <div class="form-group">
-                <label for="timeSpent" class="col-form-label"
-                  >Total Requirement Analysis Hours</label
+                <label for="timeSpent" class="form-control-label"
+                  >Time Spent</label
                 >
-                <input
-                  id="timeSpent"
-                  name="timeSpent"
-                  th:value="${timeSpent}"
-                  type="number"
-                  class="form-control"
-                />
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="fas fa-pen"></i
+                    ></span>
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    th:field="*{timeSpent}"
+                    id="timeSpent"
+                  />
+                </div>
+                <div
+                  class="text text-danger"
+                  th:if="${#fields.hasErrors('timeSpent')}"
+                  th:errors="*{timeSpent}"
+                ></div>
               </div>
-              
             </div>
 
             <input type="submit" value="Submit" class="btn btn-primary" />
